@@ -34,12 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
         barcodeDetector =
                 new BarcodeDetector.Builder(this)
-                        .setBarcodeFormats(Barcode.QR_CODE)
+                        .setBarcodeFormats(Barcode.QR_CODE | Barcode.UPC_A | Barcode.UPC_E)
                         .build();
 
         cameraSource = new CameraSource
                 .Builder(this, barcodeDetector)
-                .setRequestedPreviewSize(640, 480)
+                .setRequestedPreviewSize(1600, 1024)
+                .setAutoFocusEnabled(true)
                 .build();
 
         cameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
